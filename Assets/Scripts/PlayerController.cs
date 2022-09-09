@@ -4,6 +4,7 @@ using System.Collections.Specialized;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -64,4 +65,5 @@ public class PlayerController : MonoBehaviour
         }
         
     }
+
 }
