@@ -4,7 +4,6 @@ using System.Collections.Specialized;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using TMPro;
-using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -17,6 +16,8 @@ public class PlayerController : MonoBehaviour
     private float movementX;
     private float movementY;
 
+    Vector3 originalPos;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -26,6 +27,8 @@ public class PlayerController : MonoBehaviour
         SetCountText();
 
         winTextObject.SetActive(false);
+
+        originalPos = gameObject.transform.position;
     }
 
     void OnMove(InputValue movementValue)
@@ -64,6 +67,11 @@ public class PlayerController : MonoBehaviour
             SetCountText();
         }
         
+        if (other.gameObject.CompareTag("End"))
+        {
+            gameObject.transform.position = originalPos;                       
+        }
+
     }
 
 }
