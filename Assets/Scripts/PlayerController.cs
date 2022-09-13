@@ -69,7 +69,8 @@ public class PlayerController : MonoBehaviour
         
         if (other.gameObject.CompareTag("End"))
         {
-            gameObject.transform.position = originalPos;                       
+            gameObject.transform.position = originalPos;
+            rb.Sleep();
         }
 
     }
