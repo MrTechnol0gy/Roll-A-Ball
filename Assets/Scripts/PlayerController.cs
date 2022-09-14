@@ -28,6 +28,7 @@ public class PlayerController : MonoBehaviour
 
         winTextObject.SetActive(false);
 
+        //sets original position so player can be reset upon an out of bounds situation
         originalPos = gameObject.transform.position;
     }
 
@@ -43,6 +44,7 @@ public class PlayerController : MonoBehaviour
 
     void SetCountText()
     {
+        //Displays the score
         countText.text = "Count: " + count.ToString();
         if(count >= 32)
         {
@@ -59,6 +61,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        //Picks up the tagged object and iterates the game score
         if (other.gameObject.CompareTag("PickUp"))
         {
             other.gameObject.SetActive(false);
@@ -67,9 +70,12 @@ public class PlayerController : MonoBehaviour
             SetCountText();
         }
         
+        //Resets player location and velocity if they fall out of bounds.
         if (other.gameObject.CompareTag("End"))
         {
+            //resets position
             gameObject.transform.position = originalPos;
+            //resets velocity
             rb.Sleep();
         }
 
